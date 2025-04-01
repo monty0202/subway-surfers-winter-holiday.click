@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) - 延迟加载以提高页面加载速度 -->
+    <script>
+    window.addEventListener('load', function() {
+        // 延迟加载 Google Analytics
+        setTimeout(function() {
+            var gtagScript = document.createElement('script');
+            gtagScript.async = true;
+            gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-RJ9RBGYCEE';
+            document.head.appendChild(gtagScript);
+            
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RJ9RBGYCEE');
+        }, 2000); // 延迟2秒加载
+    });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play Subway Surfers - An addictive and challenging endless runner game where you dodge trains, collect coins and unlock characters. Test your reflexes with endless gameplay!">
+    <meta name="keywords" content="Subway Surfers, endless runner, subway game, winter holiday, monty0202.github.io/subway-surfers, free online games">
+    <title>Subway Surfers - Endless Running Adventure | monty0202.github.io/subway-surfers</title>
+    <!-- 预连接到关键域名以提高加载速度 -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <!-- 优先加载关键CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <!-- 字体加载优化 -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
+    <style>
+        /* 移除重复的字体导入，已通过preload加载 */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .game-container {
+            height: calc(100vh - 70px - 2rem);
+            max-height: 80vh;
+        }
+        
+        .nav-shadow {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comment-box {
+            transition: all 0.3s ease;
+        }
+        
+        .comment-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+        
+        .reply-form {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .reply-form.active {
+            max-height: 200px;
+        }
+        
+        /* Optimize iframe loading */
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 45%; /* 降低高宽比 */
+            max-height: 55vh; /* 减小最大高度 */
+            background: #f0f0f0 url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PGxpbmUgeDE9IjEyIiB5MT0iOCIgeDI9IjEyIiB4Mj0iMTYiIHkyPSIxMiIvPjwvc3ZnPg==') no-repeat center center;
+        }
+        
+        .responsive-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* 移动端适配优化 */
+        @media (max-width: 640px) {
+            .game-container {
+                height: calc(100vh - 70px - 1rem);
+                max-height: 60vh;
+            }
+            
+            .iframe-container {
+                padding-top: 75%; /* 4:3 Aspect Ratio for mobile */
+                max-height: 60vh;
+            }
+            
+            nav {
+                padding: 0.5rem 1rem;
+            }
+            
+            .nav-logo-text {
+                font-size: 1rem;
+            }
+            
+            .comment-box {
+                padding: 0.75rem;
+            }
+            
+            .comment-form-container {
+                padding: 1rem;
+            }
+            
+            .btn-primary {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                margin-top: 1rem;
+            }
+        }
+        
+        /* 平板适配 */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .game-container {
+                max-height: 70vh;
+            }
+        }
+        
+        /* 游戏图片样式优化 */
+        .game-image-container {
+            background-color: #f5f5f5;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 比例 */
+            max-height: none;
+        }
+        
+        .game-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 确保图片填满容器 */
+            object-position: center; /* 居中显示图片 */
+            padding: 0; /* 移除内边距 */
+            max-height: none; /* 移除最大高度限制 */
+        }
+        
+        @media (max-width: 640px) {
+            .game-image-container {
+                padding-top: 56.25%; /* 保持16:9比例 */
+                max-height: none;
+            }
+            
+            .game-image-container img {
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="bg-white nav-shadow fixed w-full z-10">
+        <nav class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="mr-3">
+                    <svg class="w-10 h-10" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="50" height="50" rx="10" fill="#FF6B6B"/>
+                        <path d="M15 15 L35 15 L35 35 L15 35 Z" fill="#FFD166"/>
+                        <circle cx="25" cy="25" r="7" fill="#4D96FF"/>
+                        <path d="M20 35 L30 35 L30 40 L20 40 Z" fill="#6B705C"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-800">Subway Surfers</h1>
+                    <p class="text-sm text-gray-600 hidden sm:block">Run, dodge and escape in this thrilling endless runner!</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#game" class="text-indigo-600 hover:text-indigo-800 font-medium">Play Now</a>
+                <a href="#comments" class="text-indigo-600 hover:text-indigo-800 font-medium">Comments</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24 pb-12">
+        <!-- Game Section -->
+        <section id="game" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-4 bg-gradient-to-r from-indigo-500 to-purple-600">
+                    <h2 class="text-xl font-bold text-white">Subway Surfers - Endless Running Adventure!</h2>
+                </div>
+                <div class="game-container iframe-container">
+                    <iframe id="game-frame" class="responsive-iframe" src="https://monty0202.github.io/subway-surfers/" title="Subway Surfers Game" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="p-4 bg-gray-50 border-t border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-700"><i class="fas fa-gamepad mr-2 text-indigo-500"></i> Run through subways, collect coins and avoid obstacles</p>
+                        </div>
+                        <div>
+                            <button id="fullscreen-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                                <i class="fas fa-expand mr-1"></i> Fullscreen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommended Games Section -->
+        <section id="recommended-games" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-4 bg-gradient-to-r from-indigo-500 to-purple-600">
+                    <h2 class="text-xl font-bold text-white">Recommended Games</h2>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Game 1 -->
+                        <div class="game-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200 transition-all hover:shadow-lg">
+                            <a href="https://bigbigluck.work/" target="_blank" class="block">
+                                <div class="game-image-container relative pt-[100%] overflow-hidden bg-gray-100">
+                                    <img src="./BallSortMaster.png" alt="Ball Sort Master" class="absolute inset-0 w-full h-full object-cover transition-transform hover:scale-105" loading="lazy">
+                                </div>
+                            </a>
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Ball Sort Master</h3>
+                                <p class="text-gray-600">Challenge your brain by sorting colorful balls into the correct tubes!</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Game 2 (Changed from Subway Surfers to Bubble Up Endless) -->
+                        <div class="game-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200 transition-all hover:shadow-lg">
+                            <a href="https://bubble-up-endless.click/" target="_blank" class="block">
+                                <div class="game-image-container relative pt-[100%] overflow-hidden bg-gray-100">
+                                    <img src="./bubble-up-endless.png" alt="Bubble Up Endless" class="absolute inset-0 w-full h-full object-cover transition-transform hover:scale-105" loading="lazy">
+                                </div>
+                            </a>
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Bubble Up Endless</h3>
+                                <p class="text-gray-600">Challenge your reflexes with rising bubbles through increasingly difficult obstacles!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comments Section -->
+        <section id="comments" class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-4 bg-gradient-to-r from-indigo-500 to-purple-600">
+                    <h2 class="text-xl font-bold text-white">Player Comments</h2>
+                </div>
+                <div class="p-6">
+                    <!-- Comment Form -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Leave a Comment</h3>
+                        <form id="comment-form" class="space-y-4" action="javascript:void(0);">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors" required>
+                            </div>
+                            <div>
+                                <label for="comment" class="block text-sm font-medium text-gray-700 mb-1">Your Comment</label>
+                                <textarea id="comment" name="comment" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors" required></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn-primary px-6 py-3 text-white font-medium rounded-lg">
+                                    <i class="fas fa-paper-plane mr-2"></i> Post Comment
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Comments List -->
+                    <div id="comments-list">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Comments</h3>
+                        <!-- 已有的评论会在这里显示 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About Subway Surfers</h3>
+                    <p class="text-gray-400 mb-4">Subway Surfers is an exhilarating endless runner game that challenges your reflexes as you dash through subway tracks. The goal is simple: run as far as possible, dodge oncoming trains, and collect coins while avoiding obstacles.</p>
+                    <p class="text-gray-400 mb-4">With colorful graphics and exciting gameplay, Subway Surfers will keep you entertained for hours. The game is easy to learn but challenging to master, making it perfect for players of all ages looking for an adrenaline-pumping experience.</p>
+                    <div class="mt-4">
+                        <h4 class="text-md font-semibold mb-2 text-gray-300">How to Play:</h4>
+                        <ul class="list-disc pl-5 text-gray-400 space-y-1">
+                            <li>Swipe up to jump over obstacles</li>
+                            <li>Swipe down to roll under barriers</li>
+                            <li>Swipe left or right to change lanes</li>
+                            <li>Collect coins to unlock characters and power-ups</li>
+                            <li>Use hoverboards for temporary invincibility</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Game Features</h3>
+                    <ul class="text-gray-400 space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2"><i class="fas fa-check-circle"></i></span>
+                            <span>Endless running gameplay with increasing difficulty</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2"><i class="fas fa-check-circle"></i></span>
+                            <span>Smooth, responsive controls for precise movement</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2"><i class="fas fa-check-circle"></i></span>
+                            <span>Vibrant graphics and engaging sound effects</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2"><i class="fas fa-check-circle"></i></span>
+                            <span>Multiple characters to unlock and play with</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2"><i class="fas fa-check-circle"></i></span>
+                            <span>Power-ups and special items to enhance your run</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2"><i class="fas fa-check-circle"></i></span>
+                            <span>Free to play with exciting challenges and missions</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6">
+                        <p class="text-gray-400">Perfect for quick gaming sessions during breaks or longer play when you want to challenge yourself. Subway Surfers is the ultimate test of your reflexes and timing!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 添加一个函数来清除 localStorage 中的评论
+        function clearCommentsStorage() {
+            localStorage.removeItem('gameComments');
+            console.log('Comments storage cleared');
+        }
+
+        // 修改 DOMContentLoaded 事件处理程序
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded, initializing comment functionality...');
+            
+            // 清除现有的评论存储，确保预置评论能够显示
+            clearCommentsStorage();
+            
+            // 先加载已保存的评论
+            loadCommentsFromStorage();
+            
+            // 检查是否有评论，如果没有则添加预置评论
+            const commentsList = document.getElementById('comments-list');
+            const commentBoxes = commentsList.querySelectorAll('.comment-box');
+            
+            if (commentBoxes.length === 0) {
+                console.log('No comments found, adding preset comments');
+                addPresetComments();
+            } else {
+                console.log('Found existing comments:', commentBoxes.length);
+            }
+            
+            // 初始化评论表单
+            initializeCommentForm();
+            // 初始化回复按钮和表单
+            initializeReplyButtons();
+            // 初始化全屏按钮
+            initializeFullscreenButton();
+            
+            console.log('All comment functionality initialized');
+        });
+        
+        // 使用DOMContentLoaded事件确保DOM完全加载后再执行脚本
+        // 这样可以避免脚本在DOM元素加载前执行导致的错误
+
+        // 修改 loadCommentsFromStorage 函数，确保不会清空预置评论
+        function loadCommentsFromStorage() {
+            console.log('Loading comments from localStorage...');
+            const savedComments = localStorage.getItem('gameComments');
+            if (savedComments) {
+                try {
+                    const comments = JSON.parse(savedComments);
+                    console.log('Loaded comments:', comments.length);
+                    
+                    if (comments.length === 0) {
+                        console.log('No saved comments found');
+                        return; // 如果没有保存的评论，直接返回，不清空现有评论
+                    }
+                    
+                    const commentsList = document.getElementById('comments-list');
+                    if (!commentsList) {
+                        console.error('Comments list element not found');
+                        return;
+                    }
+                    
+                    // 保存标题元素
+                    const titleElement = commentsList.querySelector('h3');
+                    const titleText = titleElement ? titleElement.textContent : 'Recent Comments';
+                    
+                    // 清空现有评论
+                    commentsList.innerHTML = '';
+                    
+                    // 重新添加标题
+                    const newTitleElement = document.createElement('h3');
+                    newTitleElement.className = 'text-lg font-semibold text-gray-800 mb-4';
+                    newTitleElement.textContent = titleText;
+                    commentsList.appendChild(newTitleElement);
+                    
+                    // 按时间倒序排序评论
+                    comments.sort((a, b) => {
+                        // 尝试比较时间戳，如果失败则保持原顺序
+                        try {
+                            return new Date(b.timestamp) - new Date(a.timestamp);
+                        } catch (e) {
+                            return 0;
+                        }
+                    });
+                    
+                    // 重新添加所有评论，使用HTML转义
+                    comments.forEach(comment => {
+                        const escapeHtml = (text) => {
+                            const div = document.createElement('div');
+                            div.textContent = text;
+                            return div.innerHTML;
+                        };
+                        
+                        const commentEl = addNewComment(escapeHtml(comment.name), escapeHtml(comment.comment), comment.timestamp);
+                        
+                        // 添加该评论的所有回复
+                        if (comment.replies && comment.replies.length > 0 && commentEl) {
+                            const repliesContainer = commentEl.querySelector('.flex-1 .replies');
+                            if (repliesContainer) {
+                                comment.replies.forEach(reply => {
+                                    addReply(commentEl.querySelector('.flex-1'), escapeHtml(reply.name), escapeHtml(reply.comment));
+                                });
+                            }
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error loading comments from localStorage:', error);
+                }
+            } else {
+                console.log('No saved comments found in localStorage');
+            }
+        }
+
+        // 全屏按钮功能
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        const gameFrame = document.getElementById('game-frame');
+        
+        fullscreenBtn.addEventListener('click', function() {
+            if (gameFrame.requestFullscreen) {
+                gameFrame.requestFullscreen();
+            } else if (gameFrame.webkitRequestFullscreen) { /* Safari */
+                gameFrame.webkitRequestFullscreen();
+            } else if (gameFrame.msRequestFullscreen) { /* IE11 */
+                gameFrame.msRequestFullscreen();
+            }
+        });
+        
+        // 回复按钮切换功能
+        const replyToggles = document.querySelectorAll('.reply-toggle');
+        
+        replyToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const replyForm = this.nextElementSibling;
+                replyForm.classList.toggle('hidden');
+                replyForm.classList.toggle('active');
+            });
+        });
+        
+        // 添加 saveCommentsToStorage 函数
+        function saveCommentsToStorage() {
+            console.log('Saving comments to localStorage...');
+            const commentsList = document.getElementById('comments-list');
+            if (!commentsList) {
+                console.error('Comments list element not found');
+                return;
+            }
+            
+            const comments = [];
+            
+            // 获取所有评论
+            const commentBoxes = commentsList.querySelectorAll('.comment-box');
+            console.log('Found', commentBoxes.length, 'comments to save');
+            
+            commentBoxes.forEach(box => {
+                const nameElement = box.querySelector('h4');
+                const commentElement = box.querySelector('p');
+                const timestampElement = box.querySelector('.text-sm.text-gray-500');
+                
+                if (nameElement && commentElement) {
+                    try {
+                        // 使用textContent获取原始文本内容
+                        const comment = {
+                            name: nameElement.textContent.trim(),
+                            comment: commentElement.textContent.trim(),
+                            timestamp: new Date().toLocaleString(), // 使用当前时间作为备用
+                            replies: [],
+                            isCurrentUser: true // 标记为当前用户的评论
+                        };
+                        
+                        // 尝试解析时间戳
+                        if (timestampElement) {
+                            // 使用本地时间字符串
+                            comment.timestamp = timestampElement.textContent;
+                        }
+                        
+                        // 获取该评论的所有回复
+                        const repliesContainer = box.querySelector('.replies');
+                        if (repliesContainer) {
+                            const replyElements = repliesContainer.querySelectorAll('.flex.items-start');
+                            replyElements.forEach(reply => {
+                                const replyName = reply.querySelector('h5')?.textContent;
+                                const replyText = reply.querySelector('p')?.textContent;
+                                const replyTimestamp = reply.querySelector('.text-xs.text-gray-500')?.textContent;
+                                
+                                if (replyName && replyText) {
+                                    const replyObj = {
+                                        name: replyName.trim(),
+                                        comment: replyText.trim(),
+                                        timestamp: replyTimestamp || new Date().toLocaleString(),
+                                        isCurrentUser: true // 标记为当前用户的回复
+                                    };
+                                    
+                                    comment.replies.push(replyObj);
+                                }
+                            });
+                        }
+                        
+                        comments.push(comment);
+                    } catch (error) {
+                        console.error('Error processing comment:', error);
+                    }
+                }
+            });
+            
+            // 保存到localStorage
+            try {
+                localStorage.setItem('gameComments', JSON.stringify(comments));
+                console.log('Comments saved successfully:', comments.length, 'comments');
+            } catch (error) {
+                console.error('Error saving comments to localStorage:', error);
+            }
+        }
+
+        // 修改 initializeCommentForm 函数，确保评论表单正确提交
+        function initializeCommentForm() {
+            console.log('Initializing comment form...');
+            const commentForm = document.getElementById('comment-form');
+            
+            if (commentForm) {
+                // 移除所有现有的事件监听器
+                const newForm = commentForm.cloneNode(true);
+                commentForm.parentNode.replaceChild(newForm, commentForm);
+                
+                // 添加新的事件监听器
+                newForm.addEventListener('submit', function(e) {
+                    // 阻止表单默认提交行为
+                    e.preventDefault();
+                    console.log('Comment form submitted');
+                    
+                    const nameInput = document.getElementById('name');
+                    const commentInput = document.getElementById('comment');
+                    
+                    if (!nameInput || !commentInput) {
+                        console.error('Name or comment input not found');
+                        return;
+                    }
+                    
+                    const nameValue = nameInput.value.trim();
+                    const commentValue = commentInput.value.trim();
+                    
+                    if (nameValue === '' || commentValue === '') {
+                        alert('Please fill in all fields to post your comment.');
+                        return;
+                    }
+                    
+                    try {
+                        // 禁用提交按钮，防止重复提交
+                        const submitButton = this.querySelector('button[type="submit"]');
+                        if (submitButton) {
+                            submitButton.disabled = true;
+                            submitButton.textContent = 'Submitting...';
+                        }
+                        
+                        // 创建新评论并获取返回的评论元素
+                        console.log('Adding new comment:', nameValue, commentValue);
+                        const newCommentEl = addNewComment(nameValue, commentValue);
+                        
+                        if (!newCommentEl) {
+                            console.error('Failed to create new comment element');
+                            if (submitButton) {
+                                submitButton.disabled = false;
+                                submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Post Comment';
+                            }
+                            return;
+                        }
+                        
+                        console.log('New comment added successfully');
+                        
+                        // 保存评论到localStorage
+                        saveCommentsToStorage();
+                        
+                        // 重置表单
+                        nameInput.value = '';
+                        commentInput.value = '';
+                        
+                        // 恢复提交按钮
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Post Comment';
+                        }
+                        
+                        // 显示成功消息
+                        alert('Thank you! Your comment has been posted successfully.');
+                        
+                        // 滚动到新评论位置
+                        newCommentEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } catch (error) {
+                        console.error('Error adding comment:', error);
+                        alert('Sorry, we couldn\'t post your comment. Please try again.');
+                        
+                        // 恢复提交按钮
+                        const submitButton = this.querySelector('button[type="submit"]');
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Post Comment';
+                        }
+                    }
+                });
+                
+                console.log('Comment form initialized successfully');
+            } else {
+                console.error('Comment form not found');
+            }
+        }
+
+        // 初始化全屏按钮
+        function initializeFullscreenButton() {
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            const gameFrame = document.getElementById('game-frame');
+            
+            if (fullscreenBtn && gameFrame) {
+                fullscreenBtn.addEventListener('click', function() {
+                    if (gameFrame.requestFullscreen) {
+                        gameFrame.requestFullscreen();
+                    } else if (gameFrame.webkitRequestFullscreen) { /* Safari */
+                        gameFrame.webkitRequestFullscreen();
+                    } else if (gameFrame.msRequestFullscreen) { /* IE11 */
+                        gameFrame.msRequestFullscreen();
+                    }
+                });
+            }
+        }
+
+        // 注意：页面功能已在顶部的DOMContentLoaded事件中初始化
+        // 不需要重复初始化
+
+        // 初始化回复按钮和回复表单
+        function initializeReplyButtons() {
+            const replyToggles = document.querySelectorAll('.reply-toggle');
+            
+            replyToggles.forEach(toggle => {
+                // 移除可能存在的旧事件监听器
+                const newToggle = toggle.cloneNode(true);
+                toggle.parentNode.replaceChild(newToggle, toggle);
+                
+                newToggle.addEventListener('click', function() {
+                    const replyForm = this.nextElementSibling;
+                    if (replyForm) {
+                        replyForm.classList.toggle('hidden');
+                        replyForm.classList.toggle('active');
+                    }
+                });
+                
+                // 初始化回复表单的提交事件
+                const replyForm = newToggle.nextElementSibling;
+                if (replyForm) {
+                    const form = replyForm.querySelector('form');
+                    if (form) {
+                        form.addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            
+                            const nameInput = this.querySelector('input[type="text"]');
+                            const replyInput = this.querySelector('textarea');
+                            
+                            if (!nameInput || !replyInput || nameInput.value.trim() === '' || replyInput.value.trim() === '') {
+                                alert('Please enter your name and reply before submitting.');
+                                return;
+                            }
+                            
+                            const commentEl = this.closest('.flex-1');
+                            if (commentEl) {
+                                addReply(commentEl, nameInput.value.trim(), replyInput.value.trim());
+                                
+                                // 重置表单
+                                nameInput.value = '';
+                                replyInput.value = '';
+                                
+                                // 关闭回复表单
+                                replyForm.classList.add('hidden');
+                                replyForm.classList.remove('active');
+                                
+                                // 保存评论到localStorage
+                                saveCommentsToStorage();
+                            }
+                        });
+                    }
+                }
+            });
+        }
+        
+        // 添加新评论到列表
+        function addNewComment(name, commentText, timestamp = null) {
+            console.log('Adding new comment:', name, commentText);
+            const commentsList = document.getElementById('comments-list');
+            if (!commentsList) {
+                console.error('Comments list element not found');
+                alert('Comments list not found. Please refresh the page and try again.');
+                return null;
+            }
+            
+            // 确保评论列表有标题
+            const existingTitleElement = commentsList.querySelector('h3');
+            if (!existingTitleElement) {
+                const newTitleElement = document.createElement('h3');
+                newTitleElement.className = 'text-lg font-semibold text-gray-800 mb-4';
+                newTitleElement.textContent = 'Recent Comments';
+                commentsList.appendChild(newTitleElement);
+            }
+            
+            // 获取所有评论框（不包括标题）
+            const commentBoxes = commentsList.querySelectorAll('.comment-box');
+            console.log('Found existing comments:', commentBoxes.length);
+            
+            // 创建新评论元素
+            const newComment = document.createElement('div');
+            newComment.className = 'comment-box bg-white p-4 rounded-lg mb-4 border border-gray-200 shadow-sm';
+            
+            // HTML转义函数
+            const escapeHtml = (text) => {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            };
+            
+            // 获取用户名首字母作为头像
+            const initials = name.split(' ').map(n => n[0] || '').join('').toUpperCase();
+            const escapedName = escapeHtml(name);
+            const escapedComment = escapeHtml(commentText);
+            
+            // 随机颜色类
+            const bgColors = ['bg-indigo-100', 'bg-green-100', 'bg-yellow-100', 'bg-red-100', 'bg-purple-100', 'bg-blue-100'];
+            const textColors = ['text-indigo-500', 'text-green-500', 'text-yellow-600', 'text-red-500', 'text-purple-500', 'text-blue-500'];
+            const randomIndex = Math.floor(Math.random() * bgColors.length);
+            
+            // 使用提供的时间戳或当前时间
+            const displayTime = timestamp || 'Just now';
+            
+            newComment.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <div class="flex-shrink-0">
+                        <div class="w-10 h-10 rounded-full ${bgColors[randomIndex]} flex items-center justify-center ${textColors[randomIndex]} font-semibold shadow-sm">${initials}</div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-semibold text-gray-800 truncate">${escapedName}</h4>
+                            <span class="text-sm text-gray-500 flex-shrink-0 ml-2">${displayTime}</span>
+                        </div>
+                        <p class="text-gray-700 mb-2">${escapedComment}</p>
+                        <button class="reply-toggle text-sm text-indigo-600 hover:text-indigo-800 font-medium"><i class="fas fa-reply mr-1"></i> Reply</button>
+                        <div class="reply-form hidden mt-3">
+                            <form class="space-y-3" action="javascript:void(0);">
+                                <div>
+                                    <input type="text" placeholder="Your Name" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors" required>
+                                </div>
+                                <div>
+                                    <textarea placeholder="Your Reply" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors" required></textarea>
+                                </div>
+                                <div>
+                                    <button type="submit" class="px-4 py-2 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700 transition-colors">Submit Reply</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="replies mt-4 pl-6 border-l-2 border-indigo-100 space-y-4"></div>
+                    </div>
+                </div>
+            `;
+
+            // 将新评论添加到评论列表的最上方（标题元素之后）
+            const headerElement = commentsList.querySelector('h3');
+            if (headerElement && headerElement.nextSibling) {
+                commentsList.insertBefore(newComment, headerElement.nextSibling);
+            } else {
+                commentsList.appendChild(newComment);
+            }
+            
+            // 确保新评论可见
+            newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            console.log('New comment element created and added to DOM');
+            
+            // 初始化新评论的回复按钮
+            const newReplyToggle = newComment.querySelector('.reply-toggle');
+            if (newReplyToggle) {
+                newReplyToggle.addEventListener('click', function() {
+                    const replyForm = this.nextElementSibling;
+                    if (replyForm) {
+                        replyForm.classList.toggle('hidden');
+                        replyForm.classList.toggle('active');
+                    }
+                });
+            }
+            
+            // 添加回复表单提交功能
+            const newReplyForm = newComment.querySelector('form');
+            if (newReplyForm) {
+                newReplyForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    console.log('Reply form submitted');
+                    
+                    const nameInput = this.querySelector('input');
+                    const replyInput = this.querySelector('textarea');
+                    
+                    if (!nameInput || !replyInput) {
+                        console.error('Name or reply input not found');
+                        return;
+                    }
+                    
+                    const nameValue = nameInput.value.trim();
+                    const replyValue = replyInput.value.trim();
+                    
+                    if (nameValue === '' || replyValue === '') {
+                        alert('Please enter your name and reply before submitting.');
+                        return;
+                    }
+                    
+                    console.log('Adding reply:', nameValue, replyValue);
+                    
+                    // 添加回复
+                    const parentElement = this.closest('.flex-1');
+                    if (parentElement) {
+                        addReply(parentElement, nameValue, replyValue);
+                        
+                        // 重置表单
+                        nameInput.value = '';
+                        replyInput.value = '';
+                        
+                        // 关闭回复表单
+                        const replyForm = this.closest('.reply-form');
+                        if (replyForm) {
+                            replyForm.classList.add('hidden');
+                            replyForm.classList.remove('active');
+                        }
+                        
+                        // 保存评论到localStorage
+                        saveCommentsToStorage();
+                        
+                        // 显示成功消息
+                        alert(`Thank you! Your reply has been posted successfully.`);
+                    }
+                });
+            }
+            
+            // 保存评论到localStorage
+            saveCommentsToStorage();
+            
+            return newComment;
+        }
+        
+        // 添加回复到评论
+        function addReply(parentElement, name, replyText) {
+            console.log('Adding reply to comment:', name, replyText);
+            // 查找回复容器
+            const repliesContainer = parentElement.querySelector('.replies');
+            if (!repliesContainer) {
+                console.error('Replies container not found');
+                return;
+            }
+            
+            // HTML转义函数
+            const escapeHtml = (text) => {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            };
+            
+            // 获取用户名首字母作为头像
+            const initials = name.split(' ').map(n => n[0] || '').join('').toUpperCase();
+            const escapedName = escapeHtml(name);
+            const escapedReply = escapeHtml(replyText);
+            
+            // 随机颜色类
+            const bgColors = ['bg-indigo-100', 'bg-green-100', 'bg-yellow-100', 'bg-red-100', 'bg-purple-100', 'bg-blue-100'];
+            const textColors = ['text-indigo-500', 'text-green-500', 'text-yellow-600', 'text-red-500', 'text-purple-500', 'text-blue-500'];
+            const randomIndex = Math.floor(Math.random() * bgColors.length);
+            
+            // 创建新回复元素
+            const newReply = document.createElement('div');
+            newReply.className = 'relative';
+            newReply.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 rounded-full ${bgColors[randomIndex]} flex items-center justify-center ${textColors[randomIndex]} font-semibold text-sm shadow-sm">${initials}</div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between mb-1">
+                            <h5 class="font-semibold text-gray-800 text-sm truncate">${escapedName}</h5>
+                            <span class="text-xs text-gray-500 flex-shrink-0 ml-2">Just now</span>
+                        </div>
+                        <p class="text-sm text-gray-700">${escapedReply}</p>
+                    </div>
+                </div>
+            `;
+            
+            // 添加回复到容器
+            repliesContainer.appendChild(newReply);
+            
+            // 保存评论到localStorage
+            saveCommentsToStorage();
+            
+            console.log('Reply added successfully');
+        }
+
+        // Modify the addPresetComments function to change the preset comments
+        function addPresetComments() {
+            console.log('Adding preset comments...');
+            const commentsList = document.getElementById('comments-list');
+            
+            if (!commentsList) {
+                console.error('Comments list element not found');
+                return;
+            }
+            
+            // 确保评论列表有标题
+            let titleElement = commentsList.querySelector('h3');
+            if (!titleElement) {
+                titleElement = document.createElement('h3');
+                titleElement.className = 'text-lg font-semibold text-gray-800 mb-4';
+                titleElement.textContent = 'Recent Comments';
+                commentsList.appendChild(titleElement);
+            }
+            
+            // 预置评论数据 - 新的评论内容
+            const presetComments = [
+                {
+                    name: "Alex Rodriguez",
+                    initials: "AR",
+                    comment: "Subway Surfers is my all-time favorite mobile game! The winter holiday theme looks amazing with all the snow effects and festive decorations. I've been playing for years and it never gets old.",
+                    timestamp: "3 days ago",
+                    replies: [
+                        {
+                            name: "Game Admin",
+                            initials: "GA",
+                            comment: "Thanks for your continued support, Alex! Have you unlocked the new holiday character yet?",
+                            timestamp: "2 days ago"
+                        }
+                    ],
+                    isCurrentUser: true
+                },
+                {
+                    name: "Sarah Chen",
+                    initials: "SC",
+                    comment: "The controls are so responsive and smooth! I love how they've added new obstacles in this version. My high score is 567,890 - can anyone beat that?",
+                    timestamp: "1 week ago",
+                    replies: [],
+                    isCurrentUser: true
+                },
+                {
+                    name: "Marcus Wilson",
+                    initials: "MW",
+                    comment: "This winter version is awesome! The snowboards and holiday outfits add such a fun twist to the classic gameplay. I especially love collecting the gift boxes for bonus points.",
+                    timestamp: "2 weeks ago",
+                    replies: [],
+                    isCurrentUser: true
+                }
+            ];
+            
+            // 添加预置评论
+            presetComments.forEach(comment => {
+                const commentEl = document.createElement('div');
+                commentEl.className = 'comment-box bg-white p-4 rounded-lg mb-4 border border-gray-200 shadow-sm';
+                
+                // 随机颜色类 - 但为了匹配截图，使用固定颜色
+                let bgColor, textColor;
+                
+                if (comment.name === "Alex Rodriguez") {
+                    bgColor = "bg-blue-100";
+                    textColor = "text-blue-600";
+                } else if (comment.name === "Sarah Chen") {
+                    bgColor = "bg-green-100";
+                    textColor = "text-green-600";
+                } else if (comment.name === "Marcus Wilson") {
+                    bgColor = "bg-yellow-100";
+                    textColor = "text-yellow-600";
+                } else {
+                    // 随机颜色作为后备
+                    const bgColors = ['bg-indigo-100', 'bg-green-100', 'bg-yellow-100', 'bg-red-100', 'bg-purple-100', 'bg-blue-100'];
+                    const textColors = ['text-indigo-500', 'text-green-500', 'text-yellow-600', 'text-red-500', 'text-purple-500', 'text-blue-500'];
+                    const randomIndex = Math.floor(Math.random() * bgColors.length);
+                    bgColor = bgColors[randomIndex];
+                    textColor = textColors[randomIndex];
+                }
+                
+                commentEl.innerHTML = `
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0">
+                            <div class="w-10 h-10 rounded-full ${bgColor} flex items-center justify-center ${textColor} font-semibold shadow-sm">${comment.initials}</div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between mb-1">
+                                <h4 class="font-semibold text-gray-800 truncate">${comment.name}</h4>
+                                <span class="text-sm text-gray-500 flex-shrink-0 ml-2">${comment.timestamp}</span>
+                            </div>
+                            <p class="text-gray-700 mb-2">${comment.comment}</p>
+                            <button class="reply-toggle text-sm text-indigo-600 hover:text-indigo-800 font-medium"><i class="fas fa-reply mr-1"></i> Reply</button>
+                            <div class="reply-form hidden mt-3">
+                                <form class="space-y-3" action="javascript:void(0);">
+                                    <div>
+                                        <input type="text" placeholder="Your Name" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors" required>
+                                    </div>
+                                    <div>
+                                        <textarea placeholder="Your Reply" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors" required></textarea>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="px-4 py-2 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700 transition-colors">Submit Reply</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="replies mt-4 pl-6 border-l-2 border-indigo-100 space-y-4"></div>
+                        </div>
+                    </div>
+                `;
+                
+                // 添加回复
+                if (comment.replies && comment.replies.length > 0) {
+                    const repliesContainer = commentEl.querySelector('.replies');
+                    
+                    comment.replies.forEach(reply => {
+                        // 为回复选择颜色
+                        let replyBgColor, replyTextColor;
+                        
+                        if (reply.name === "Game Admin") {
+                            replyBgColor = "bg-purple-100";
+                            replyTextColor = "text-purple-600";
+                        } else {
+                            // 随机颜色作为后备
+                            const bgColors = ['bg-indigo-100', 'bg-green-100', 'bg-yellow-100', 'bg-red-100', 'bg-purple-100', 'bg-blue-100'];
+                            const textColors = ['text-indigo-500', 'text-green-500', 'text-yellow-600', 'text-red-500', 'text-purple-500', 'text-blue-500'];
+                            const randomIndex = Math.floor(Math.random() * bgColors.length);
+                            replyBgColor = bgColors[randomIndex];
+                            replyTextColor = textColors[randomIndex];
+                        }
+                        
+                        const replyEl = document.createElement('div');
+                        replyEl.className = 'mb-3';
+                        replyEl.innerHTML = `
+                            <div class="flex items-start space-x-3">
+                                <div class="flex-shrink-0">
+                                    <div class="w-8 h-8 rounded-full ${replyBgColor} flex items-center justify-center ${replyTextColor} font-semibold text-sm shadow-sm">${reply.initials}</div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h5 class="font-semibold text-gray-800 text-sm truncate">${reply.name}</h5>
+                                        <span class="text-xs text-gray-500 flex-shrink-0 ml-2">${reply.timestamp}</span>
+                                    </div>
+                                    <p class="text-sm text-gray-700">${reply.comment}</p>
+                                </div>
+                            </div>
+                        `;
+                        
+                        repliesContainer.appendChild(replyEl);
+                    });
+                }
+                
+                // 将评论添加到列表
+                commentsList.appendChild(commentEl);
+            });
+            
+            // 初始化回复按钮
+            const replyToggles = commentsList.querySelectorAll('.reply-toggle');
+            replyToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const replyForm = this.nextElementSibling;
+                    if (replyForm) {
+                        replyForm.classList.toggle('hidden');
+                        replyForm.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // 保存预置评论到localStorage
+            saveCommentsToStorage();
+            
+            // 初始化回复表单
+            const replyForms = commentsList.querySelectorAll('.reply-form form');
+            replyForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const nameInput = this.querySelector('input[type="text"]');
+                    const replyInput = this.querySelector('textarea');
+                    
+                    if (!nameInput || !replyInput || nameInput.value.trim() === '' || replyInput.value.trim() === '') {
+                        alert('Please enter your name and reply before submitting.');
+                        return;
+                    }
+                    
+                    // 添加回复
+                    const commentEl = this.closest('.flex-1');
+                    if (commentEl) {
+                        addReply(commentEl, nameInput.value.trim(), replyInput.value.trim());
+                        
+                        // 重置表单
+                        nameInput.value = '';
+                        replyInput.value = '';
+                        
+                        // 关闭回复表单
+                        const replyForm = this.closest('.reply-form');
+                        if (replyForm) {
+                            replyForm.classList.add('hidden');
+                            replyForm.classList.remove('active');
+                        }
+                        
+                        // 保存评论到localStorage
+                        saveCommentsToStorage();
+                        
+                        // 显示成功消息
+                        alert('Thank you! Your reply has been posted successfully.');
+                    }
+                });
+            });
+            
+            console.log('Preset comments added successfully');
+        }
+    </script>
+</body>
+</html>
